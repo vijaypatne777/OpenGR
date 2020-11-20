@@ -1,0 +1,195 @@
+<mvc:View controllerName="OpenGR.OpenGR.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:fb="sap.ui.comp.filterbar">
+	<Page id="page">
+		<content>
+			<fb:FilterBar id="fbar" search="getData" >
+			
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="KeySearch" name="A" label="Key Date"
+					                    visibleInFilterBar="true"
+					                    mandatory="true">
+						<fb:control>
+							<DatePicker id="kdate" value="{ type: 'sap.ui.model.odata.DateTime', formatOptions: {pattern: 'yyyy/MM/dd',  style: 'short', strictParsing: true , UTC: true}}" valueFormat="yyyy-MM-dd"></DatePicker>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="PurchaseGrp" name="d" label="Purchasing Group"
+					                    visibleInFilterBar="true">
+						<fb:control>
+						<MultiInput id="purgrp" showValueHelp="false">
+							
+						</MultiInput>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="PurchaseSearch" name="C" label="Purchase Orders"
+					                    visibleInFilterBar="true">
+						<fb:control>
+						<MultiInput id="purord" showValueHelp="false">
+							
+						</MultiInput>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="supplierSearch" name="B" label="Supplier"
+					                    visibleInFilterBar="true"
+					                    >
+						<fb:control>
+						<MultiInput id="supp" showValueHelp="true" valueHelpRequest="searchSuppliers">
+							
+						</MultiInput>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+			<ScrollContainer id="myContainer" horizontal="true" >
+			<Table id="openGRTable" items="{ path: '/rec'}" growing="true" width="100%" sticky="ColumnHeaders" >
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>OpenGRTitle}" level="H2"/>
+									<ToolbarSpacer/>
+									<Button text="{i18n>dexcel}" type="Emphasized" icon="sap-icon://download" press="downloadData"></Button>
+								</Toolbar>
+						       </headerToolbar>
+								<columns>
+								<Column width="5rem">
+									<Text text="{i18n>supplier}"/>
+								<footer>
+								<Text text = "{/Total}"> </Text>	
+								</footer>	
+								</Column>
+								<Column width="4.5rem">
+									<Text text="{i18n>sname}"/>
+								</Column>
+							
+								<Column width="3.8rem">
+									<Text text="{i18n>plant}"/>
+								</Column>
+								<Column width="6rem">
+									<Text text="{i18n>po}"/>
+								</Column>
+								
+								<Column width="5rem">
+									<Text text="{i18n>poitem}"/>
+								</Column>
+								<Column width="6rem">
+									<Text text="{i18n>material}"/>
+								</Column>
+								<Column width="6rem">
+									<Text text="{i18n>pdesc}"/>
+								</Column>
+								<Column width="6rem">
+									<Text text="{i18n>invp}"/>
+								</Column>
+								<Column width="6rem">
+									<Text text="{i18n>dater}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>poq}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>poqu}"/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text="{i18n>pup}"/>
+								</Column>
+								<Column width="5rem">
+								<Text text="{i18n>pamt}"/>
+								</Column>
+								<Column width="5rem">
+								<Text text="{i18n>poc}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>qr}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>gqu}"/>
+								</Column>
+								<Column width="4.5rem">
+									<Text text="{i18n>grup}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>ar}"/>
+									<footer>
+									<Text text="{/gramount}" width="5rem" id="tgra"></Text>	
+									</footer>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>grcurrency}"/>
+										<footer>
+									<Text text="{/grcurrency}" width="5rem" id="tgrc"></Text>	
+									</footer>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>qi}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>iqu}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>iup}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>ainv}"/>
+									<footer>
+									<Text text="{/invamount}" width="5rem" id="tinva"></Text>	
+									</footer>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>qd}"/>
+								</Column>
+								<Column width="5rem">
+									<Text text="{i18n>ad}"/>
+										<footer>
+									<Text text="{/amtdiff}" width="5rem" id="amtdiff"></Text>	
+									</footer>
+								</Column>
+									<Column width="5rem">
+									<Text text="{i18n>invcurrency}"/>
+									<footer>
+									<Text text="{/invcurrency}" width="5rem" id="tinvc"></Text>	
+									</footer>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{Supplier}"/>
+										<Text text="{SupplierName}"/>
+										<Text text="{Plant}"/>
+										<Text text="{PurchaseOrder}"/>
+										<Text text="{PurchaseOrderItem}"/>
+										<Text text="{Material}"/>
+										<Text text="{ProductName}"/>
+										<Text text="{path:'pdate',
+										             type: 'sap.ui.model.odata.type.DateTime',
+										             formatoptions: { style: 'short' },
+										             constraints: { displayFormat: 'Date'}
+										             }"/>
+										<Text text="{path:'ddate',
+										             type: 'sap.ui.model.odata.type.DateTime',
+										             formatoptions: { style: 'short' },
+										             constraints: { displayFormat: 'Date'}
+										             }"/>
+										<Text text="{OrderQuantity}"/>
+										<Text text="{PurchaseOrderQuantityUnit}"/>
+										<Text text="{NetPriceAmount}"/>
+										<Text text="{NetAmount}"/>
+										<Text text="{pocurrency}"/>
+										<Text text="{tgrquantity}"/>
+										<Text text="{grquantityunit}"/>
+										<Text text="{grunitprice}"/>
+										<Text text="{tgramount}"/>
+										<Text text="{grcurrency}"/>
+										<Text text="{tinvquantity}"/>
+										<Text text="{invquantityunit}"/>
+										<Text text="{invunitprice}"/>
+										<Text text="{tinvamount}"/>
+										<Text text="{qdiff}"/>
+										<Text text="{damount}"/>
+										<Text text="{invcurrency}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						</ScrollContainer>
+		</content>
+	</Page>
+</mvc:View>
