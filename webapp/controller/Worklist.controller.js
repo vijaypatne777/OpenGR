@@ -838,6 +838,9 @@ sap.ui.define([
 			var ainv = this.getView().getModel("i18n").getResourceBundle().getText("ainv");
 			var qd = this.getView().getModel("i18n").getResourceBundle().getText("qd");
 			var ad = this.getView().getModel("i18n").getResourceBundle().getText("ad");
+			var poqu = this.getView().getModel("i18n").getResourceBundle().getText("poqu");
+			var gqu = this.getView().getModel("i18n").getResourceBundle().getText("gqu");
+			var iqu = this.getView().getModel("i18n").getResourceBundle().getText("iqu");
 			oColumns.push({
 				label: supplier,
 				property: "Supplier",
@@ -896,20 +899,37 @@ sap.ui.define([
 				label: poq,
 				property: "OrderQuantity",
 				width: 10,
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right"
+				
+			});
+			oColumns.push({
+				label: poqu,
+				property: "PurchaseOrderQuantityUnit",
+				width: 10,
 				type: "string"
+			
+				
 			});
 			oColumns.push({
 				label: pup,
 				property: "NetPriceAmount",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 
 			oColumns.push({
 				label: pamt,
 				property: "NetAmount",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 
 			oColumns.push({
@@ -922,19 +942,36 @@ sap.ui.define([
 				label: qr,
 				property: "tgrquantity",
 				width: 10,
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right"
+			
+			});
+				oColumns.push({
+				label: gqu,
+				property: "grquantityunit",
+				width: 10,
 				type: "string"
+			
+				
 			});
 			oColumns.push({
 				label: grup,
 				property: "grunitprice",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 			oColumns.push({
 				label: ar,
 				property: "tgramount",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 			oColumns.push({
 				label: grcurrency,
@@ -946,31 +983,54 @@ sap.ui.define([
 				label: qi,
 				property: "tinvquantity",
 				width: 10,
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right"
+				
+			});
+			oColumns.push({
+				label: iqu,
+				property: "invquantityunit",
+				width: 10,
 				type: "string"
+			
+				
 			});
 			oColumns.push({
 				label: iup,
 				property: "invunitprice",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 			oColumns.push({
 				label: ainv,
 				property: "tinvamount",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 			oColumns.push({
 				label: qd,
 				property: "qdiff",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right"
+				
 			});
 			oColumns.push({
 				label: ad,
 				property: "damount",
 				width: 10,
-				type: "string"
+				type: sap.ui.export.EdmType.Number,
+				delimiter: true,
+				textAlign: "right",
+				scale: 2
 			});
 			oColumns.push({
 				label: invcurrency,
